@@ -160,7 +160,8 @@ public class MonkeySourceNetwork implements MonkeyEventSource {
                 }
 
                 queue.enqueueEvent(new MonkeyMotionEvent(MonkeyEvent.EVENT_TYPE_POINTER,
-                                                         -1, action, x, y, 0));
+                                                         SystemClock.uptimeMillis(), 
+                                                         action, x, y, 0));
                 return OK;
             }
             return EARG;
@@ -187,7 +188,8 @@ public class MonkeySourceNetwork implements MonkeyEventSource {
                     Log.e(TAG, "Got something that wasn't a number", e);
                     return EARG;
                 }
-                queue.enqueueEvent(new MonkeyMotionEvent(MonkeyEvent.EVENT_TYPE_TRACKBALL, -1,
+                queue.enqueueEvent(new MonkeyMotionEvent(MonkeyEvent.EVENT_TYPE_TRACKBALL, 
+                                                         SystemClock.uptimeMillis(),
                                                          MotionEvent.ACTION_MOVE, dx, dy, 0));
                 return OK;
 
@@ -342,10 +344,12 @@ public class MonkeySourceNetwork implements MonkeyEventSource {
                 }
 
                 queue.enqueueEvent(new MonkeyMotionEvent(MonkeyEvent.EVENT_TYPE_POINTER,
-                                                         -1, MotionEvent.ACTION_DOWN,
+                                                         SystemClock.uptimeMillis(), 
+                                                         MotionEvent.ACTION_DOWN,
                                                          x, y, 0));
                 queue.enqueueEvent(new MonkeyMotionEvent(MonkeyEvent.EVENT_TYPE_POINTER,
-                                                         -1, MotionEvent.ACTION_UP,
+                                                         SystemClock.uptimeMillis(), 
+                                                         MotionEvent.ACTION_UP,
                                                          x, y, 0));
                 return OK;
             }
